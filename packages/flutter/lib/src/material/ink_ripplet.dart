@@ -68,22 +68,24 @@ class _InkRippletFactory extends InteractiveInkFeatureFactory {
   }
 }
 
-/// TODO: update documentation
 /// A visual reaction on a piece of [Material] to user input.
 ///
 /// A circular ink feature whose origin starts at the input touch point and
-/// whose radius expands from 60% of the final radius. The splash origin
-/// animates to the center of its [referenceBox].
+/// whose radius expands from 30% of the final radius. The splash origin
+/// animates to the center of its [referenceBox]. The ripplet also includes
+/// a background highlight.
 ///
-/// This object is rarely created directly. Instead of creating an ink ripple,
+/// This object is rarely created directly. Instead of creating an ink ripplet,
 /// consider using an [InkResponse] or [InkWell] widget, which uses
 /// gestures (such as tap and long-press) to trigger ink splashes. This class
-/// is used when the [Theme]'s [ThemeData.splashFactory] is [InkRipple.splashFactory].
+/// is used when the [Theme]'s [ThemeData.splashFactory] is [InkRipplet.splashFactory].
 ///
 /// See also:
 ///
 ///  * [InkSplash], which is an ink splash feature that expands less
-///    aggressively than the ripple.
+///    aggressively than the [InkRipplet].
+///  * [InkRipple], which is visually similar to the [InkRipplet], but has
+///    a larger initial radius, and no background highlight.
 ///  * [InkResponse], which uses gestures to trigger ink highlights and ink
 ///    splashes in the parent [Material].
 ///  * [InkWell], which is a rectangular [InkResponse] (the most common type of
@@ -103,10 +105,10 @@ class InkRipplet extends InteractiveInkFeature {
   /// otherwise is the bounds of the [referenceBox].
   ///
   /// If [containedInkWell] is false, then [rectCallback] should be null.
-  /// The ink ripple is clipped only to the edges of the [Material].
+  /// The ink ripplet is clipped only to the edges of the [Material].
   /// This is the default.
   ///
-  /// When the ripple is removed, [onRemoved] will be called.
+  /// When the ripplet is removed, [onRemoved] will be called.
   InkRipplet({
     required MaterialInkController controller,
     required RenderBox referenceBox,
@@ -144,7 +146,7 @@ class InkRipplet extends InteractiveInkFeature {
     _radiusController = AnimationController(duration: _kUnconfirmedRippleDuration, vsync: controller.vsync)
       ..addListener(controller.markNeedsPaint)
       ..forward();
-    // Initial splash diameter is 60% of the target diameter, final
+    // Initial splash diameter is 30% of the target diameter, final
     // diameter is 10dps larger than the target diameter.
     _radius = _radiusController.drive(
       Tween<double>(
@@ -184,8 +186,9 @@ class InkRipplet extends InteractiveInkFeature {
   late Animation<int> _fadeOut;
   late AnimationController _fadeOutController;
 
-  /// Used to specify this type of ink splash for an [InkWell], [InkResponse]
-  /// or material [Theme].
+  /// Used to specify that an [InkWell] or [InkResponse] should create an [InkRipplet]
+  /// for tap animations. This can be set by default by setting [InkRipplet.splashFactory]
+  /// as the [Theme.splashFactory] on a material [Theme].
   static const InteractiveInkFeatureFactory splashFactory = _InkRippletFactory();
 
   static final Animatable<double> _easeCurveTween = CurveTween(curve: Curves.ease);
