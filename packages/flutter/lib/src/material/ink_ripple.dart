@@ -17,7 +17,8 @@ const Curve _kRadiusCurve = Curves.fastOutSlowIn;
 const Curve _kFadeOutCurve = Curves.linear;
 
 RectCallback? _getClipCallback(RenderBox referenceBox, bool containedInkWell, RectCallback? rectCallback) {
-  if (containedInkWell) return rectCallback ?? () => Offset.zero & referenceBox.size;
+  if (containedInkWell)
+    return rectCallback ?? () => Offset.zero & referenceBox.size;
   return null;
 }
 
