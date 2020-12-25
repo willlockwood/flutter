@@ -24,7 +24,8 @@ RectCallback? _getClipCallback(RenderBox referenceBox, bool containedInkWell, Re
     assert(containedInkWell);
     return rectCallback;
   }
-  if (containedInkWell) return () => Offset.zero & referenceBox.size;
+  if (containedInkWell)
+    return () => Offset.zero & referenceBox.size;
   return null;
 }
 
@@ -213,11 +214,13 @@ class InkRipplet extends InteractiveInkFeature {
     // dispose _fadeOutController.
     final double fadeOutValue = 1.0 - _fadeInController.value;
     _fadeOutController.value = fadeOutValue;
-    if (fadeOutValue < 1.0) _fadeOutController.animateTo(1.0, duration: _kCancelDuration);
+    if (fadeOutValue < 1.0)
+      _fadeOutController.animateTo(1.0, duration: _kCancelDuration);
   }
 
   void _handleAlphaStatusChanged(AnimationStatus status) {
-    if (status == AnimationStatus.completed) dispose();
+    if (status == AnimationStatus.completed)
+      dispose();
   }
 
   @override
