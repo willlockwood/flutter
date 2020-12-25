@@ -1089,7 +1089,7 @@ class _InkResponseState extends State<_InkResponseStateWidget>
     assert(widget.debugCheckContext(context));
     super.build(context); // See AutomaticKeepAliveClientMixin.
     for (final _HighlightType type in _highlights.keys) {
-      _highlights[type]?.color = getHighlightColorForType(type);
+      _highlights[type]?.color = getHighlightColorForType(type)!;
     }
 
     const Set<MaterialState> pressed = <MaterialState>{MaterialState.pressed};
