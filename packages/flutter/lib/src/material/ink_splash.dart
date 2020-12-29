@@ -75,7 +75,9 @@ class _InkSplashFactory extends InteractiveInkFeatureFactory {
   }
 }
 
-/// A visual reaction on a piece of [Material] to user input.
+/// A visual reaction on a piece of [Material] to user input. Implemented to be
+/// visually identical to the Android material ripple animation on AOSP API
+/// versions 27 and below.
 ///
 /// A circular ink feature whose origin starts at the input touch point
 /// and whose radius expands from zero.
@@ -86,8 +88,10 @@ class _InkSplashFactory extends InteractiveInkFeatureFactory {
 ///
 /// See also:
 ///
-///  * [InkRipple], which is an ink splash feature that expands more
+///  * [InkRipplet], which is an ink splash feature that expands more
 ///    aggressively than this class does.
+///  * [InkRipple], which is visually similar to the [InkRipplet], but has a
+///    larger initial radius, and no background highlight.
 ///  * [InkResponse], which uses gestures to trigger ink highlights and ink
 ///    splashes in the parent [Material].
 ///  * [InkWell], which is a rectangular [InkResponse] (the most common type of
@@ -167,8 +171,9 @@ class InkSplash extends InteractiveInkFeature {
   late Animation<int> _alpha;
   AnimationController? _alphaController;
 
-  /// Used to specify this type of ink splash for an [InkWell], [InkResponse]
-  /// or material [Theme].
+  /// Used to specify that an [InkWell] or [InkResponse] should create an [InkSplash]
+  /// for tap animations. This can be set by default by setting [InkSplash.splashFactory]
+  /// as the [Theme.splashFactory] on a material [Theme].
   static const InteractiveInkFeatureFactory splashFactory = _InkSplashFactory();
 
   @override
