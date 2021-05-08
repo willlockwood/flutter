@@ -1160,13 +1160,13 @@ void main() {
         // With avatar, but not selectable.
         final UniqueKey avatarKey = UniqueKey();
         await pushChip(
-          avatar: Container(width: 40.0, height: 40.0, key: avatarKey),
+          avatar: SizedBox(width: 40.0, height: 40.0, key: avatarKey),
         );
         expect(tester.getSize(find.byType(RawChip)), equals(const Size(104.0, 48.0)));
 
         // Turn on selection.
         await pushChip(
-          avatar: Container(width: 40.0, height: 40.0, key: avatarKey),
+          avatar: SizedBox(width: 40.0, height: 40.0, key: avatarKey),
           selectable: true,
         );
         await tester.pumpAndSettle();
@@ -1320,7 +1320,7 @@ void main() {
 
         final UniqueKey avatarKey = UniqueKey();
         await pushChip(
-          avatar: Container(width: 40.0, height: 40.0, key: avatarKey),
+          avatar: SizedBox(width: 40.0, height: 40.0, key: avatarKey),
           selectable: true,
         );
         await tester.pumpAndSettle();
@@ -1517,13 +1517,13 @@ void main() {
         // With avatar, but not selectable.
         final UniqueKey avatarKey = UniqueKey();
         await pushChip(
-          avatar: Container(width: 40.0, height: 40.0, key: avatarKey),
+          avatar: SizedBox(width: 40.0, height: 40.0, key: avatarKey),
         );
         expect(tester.getSize(find.byType(RawChip)), equals(const Size(104.0, 48.0)));
 
         // Turn on selection.
         await pushChip(
-          avatar: Container(width: 40.0, height: 40.0, key: avatarKey),
+          avatar: SizedBox(width: 40.0, height: 40.0, key: avatarKey),
           selectable: true,
         );
         await tester.pumpAndSettle();
@@ -1677,7 +1677,7 @@ void main() {
 
         final UniqueKey avatarKey = UniqueKey();
         await pushChip(
-          avatar: Container(width: 40.0, height: 40.0, key: avatarKey),
+          avatar: SizedBox(width: 40.0, height: 40.0, key: avatarKey),
           selectable: true,
         );
         await tester.pumpAndSettle();
