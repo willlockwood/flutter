@@ -2689,7 +2689,7 @@ void main() {
       await gesture.moveTo(tester.getCenter(find.byType(Tab)));
       await tester.pumpAndSettle();
       expect(
-        getInkFeatures(tester),
+        getMaterialInkController<TabBar>(tester),
         paints..rect(rect: const Rect.fromLTRB(0.0, 276.0, 800.0, 324.0), color: const Color(0xff00ff00)),
       );
     });
@@ -2721,7 +2721,7 @@ void main() {
       await tester.pump(const Duration(milliseconds: 200)); // unconfirmed splash is well underway
 
       expect(
-        getInkFeatures(tester),
+        getMaterialInkController<TabBar>(tester),
         paintsRipple(center: const Offset(400, 24), color: splashColor),
       );
       await gesture.up();
@@ -2754,13 +2754,13 @@ void main() {
       await tester.pump(const Duration(milliseconds: 200)); // unconfirmed splash is well underway
 
       expect(
-        getInkFeatures(tester),
+        getMaterialInkController<TabBar>(tester),
         paintsRipple(center: const Offset(400, 24), color: splashColor, alpha: 0),
       );
       await tester.pump(const Duration(milliseconds: 200));
 
       expect(
-        getInkFeatures(tester),
+        getMaterialInkController<TabBar>(tester),
         paintsRipple(center: const Offset(400, 24), color: splashColor),
       );
       await gesture.up();
